@@ -9,8 +9,9 @@ import com.justai.jaicf.template.templateBot
 
 fun main() {
     JaicpPollingConnector(
-        templateBot,
-        accessToken,
+        url = "http://localhost",
+        botApi = templateBot,
+        accessToken = accessToken,
         channels = listOf(
             ChatApiChannel,
             ChatWidgetChannel,
