@@ -33,6 +33,16 @@ object MainScenario : Scenario() {
                 reactions.say("See you soon!")
             }
         }
+        
+        state("Delivery") {
+            activators {
+                intent("Delivery")
+            }
+
+            action {
+                reactions.say(activator.caila?.topIntent?.answer.toString())
+            }
+        }
 
         fallback {
             reactions.say("I have nothing to say yet...")
