@@ -23,7 +23,13 @@ val accessToken: String = System.getenv("JAICP_API_TOKEN") ?: Properties().run {
     getProperty("apiToken")
 }
 
+val cailaUrl: String = System.getenv("CAILA_URL") ?: Properties().run {
+    load(CailaNLUSettings::class.java.getResourceAsStream("/jaicp.properties"))
+    getProperty("cailaUrl")
+}
+
 private val cailaNLUSettings = CailaNLUSettings(
+    cailaUrl = cailaUrl,
     accessToken = accessToken,
     confidenceThreshold = 0.2
 )
