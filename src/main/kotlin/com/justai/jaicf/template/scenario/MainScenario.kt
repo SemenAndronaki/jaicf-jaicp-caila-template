@@ -10,7 +10,7 @@ object MainScenario : Scenario() {
                 regex("/start")
             }
             action {
-                reactions.say("So let's begin!")
+                reactions.say("Начнём!")
             }
         }
 
@@ -20,7 +20,7 @@ object MainScenario : Scenario() {
             }
 
             action {
-                reactions.say("Hi there!")
+                reactions.say("Привет!")
             }
         }
 
@@ -30,12 +30,12 @@ object MainScenario : Scenario() {
             }
 
             action {
-                reactions.say("See you soon!")
+                reactions.say("Скоро увидимся!")
             }
         }
 
         fallback {
-            reactions.say("I have nothing to say yet...")
+            reactions.say("Мне пока нечего сказать...")
         }
     }
 }

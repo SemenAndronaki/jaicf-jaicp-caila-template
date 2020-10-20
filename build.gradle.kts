@@ -7,11 +7,11 @@ plugins {
 group = "com.justai.jaicf"
 version = "1.0.0"
 
-val jaicf = "0.5.2"
-val slf4j = "1.7.30"
+val jaicf = "0.7.1"
+val logback = "1.2.3"
 val ktor = "1.3.1"
 
-// Main class to run application on heroku. Either PollingConnectionKt, or WebhookConnectionKt
+// Main class to run application in JAICP Cloud.
 application {
     mainClassName = "com.justai.jaicf.template.connections.WebhookConnectionKt"
 }
@@ -26,8 +26,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    implementation("org.slf4j:slf4j-simple:$slf4j")
-    implementation("org.slf4j:slf4j-log4j12:$slf4j")
+    implementation("ch.qos.logback:logback-classic:$logback")
 
     implementation("com.justai.jaicf:core:$jaicf")
     implementation("com.justai.jaicf:mongo:$jaicf")
