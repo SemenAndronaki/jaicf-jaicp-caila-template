@@ -1,19 +1,28 @@
 plugins {
     application
     kotlin("jvm") version "1.3.61"
-    id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
 group = "com.justai.jaicf"
 version = "1.0.0"
 
-val jaicf = "0.7.1"
+val jaicf = "0.8.0"
 val logback = "1.2.3"
 val ktor = "1.3.1"
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("com.justai.jaicf:jaicp-build-plugin:0.1.0")
+    }
+}
+apply(plugin = "com.justai.jaicf.jaicp-build-plugin")
+
 // Main class to run application in JAICP Cloud.
 application {
-    mainClassName = "com.justai.jaicf.template.connections.WebhookConnectionKt"
+    mainClassName = "com.justai.jaicf.template.connections.JaicpServerKt"
 }
 
 repositories {
@@ -45,16 +54,6 @@ tasks {
     }
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes(
-            mapOf(
-                "Main-Class" to application.mainClassName
-            )
-        )
-    }
-}
-
-tasks.create("stage") {
-    dependsOn("shadowJar")
+tasks.withType<com.justai.jaicf.plugins.jaicp.build.JaicpBuild> {
+    mainClassName.set(application.mainClassName)
 }
