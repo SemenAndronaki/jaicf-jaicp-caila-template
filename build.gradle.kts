@@ -1,6 +1,7 @@
 plugins {
     application
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.3.71"
+    id("com.justai.jaicf.jaicp-build-plugin") version "0.1.1"
 }
 
 group = "com.justai.jaicf"
@@ -10,17 +11,7 @@ val jaicf = "0.8.0"
 val logback = "1.2.3"
 val ktor = "1.3.1"
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath("com.justai.jaicf:jaicp-build-plugin:0.1.0")
-    }
-}
-apply(plugin = "com.justai.jaicf.jaicp-build-plugin")
-
-// Main class to run application in JAICP Cloud.
+// Main class to run application on heroku. Either JaicpPollerKt, or JaicpServerKt. Will propagate to .jar main class.
 application {
     mainClassName = "com.justai.jaicf.template.connections.JaicpServerKt"
 }
@@ -38,7 +29,6 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback")
 
     implementation("com.justai.jaicf:core:$jaicf")
-    implementation("com.justai.jaicf:mongo:$jaicf")
     implementation("com.justai.jaicf:jaicp:$jaicf")
     implementation("com.justai.jaicf:caila:$jaicf")
 
@@ -52,6 +42,10 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
+}
+
+tasks.create("stage") {
+    dependsOn("shadowJar")
 }
 
 tasks.withType<com.justai.jaicf.plugins.jaicp.build.JaicpBuild> {
