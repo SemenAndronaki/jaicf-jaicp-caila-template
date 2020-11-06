@@ -77,7 +77,7 @@ object MainScenario : Scenario() {
             action {
                 activator.caila?.topIntent?.answer?.let {
                     reactions.say(it)
-                }
+                } ?: reactions.say("wow so cool it works!")
             }
         }
 
