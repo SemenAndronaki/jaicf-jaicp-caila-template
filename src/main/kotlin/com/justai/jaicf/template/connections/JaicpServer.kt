@@ -21,8 +21,6 @@ fun main() {
             AlexaChannel,
             ActionsFulfillment.ActionsFulfillmentDialogflow,
             TelegramChannel
-
-
         )
     ).start(wait = true)
 }
