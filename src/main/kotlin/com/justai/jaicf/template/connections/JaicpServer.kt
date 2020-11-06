@@ -1,6 +1,7 @@
 package com.justai.jaicf.template.connections
 
 import com.justai.jaicf.channel.alexa.AlexaChannel
+import com.justai.jaicf.channel.googleactions.ActionsFulfillment
 import com.justai.jaicf.channel.jaicp.JaicpServer
 import com.justai.jaicf.channel.jaicp.channels.ChatApiChannel
 import com.justai.jaicf.channel.jaicp.channels.ChatWidgetChannel
@@ -16,7 +17,9 @@ fun main() {
             ChatApiChannel,
             ChatWidgetChannel,
             TelephonyChannel,
-            AlexaChannel
+            AlexaChannel,
+            ActionsFulfillment.ActionsFulfillmentDialogflow
+
         )
     ).start(wait = true)
 }

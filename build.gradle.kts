@@ -32,6 +32,7 @@ dependencies {
     implementation("com.justai.jaicf:jaicp:$jaicf")
     implementation("com.justai.jaicf:caila:$jaicf")
     implementation("com.justai.jaicf:alexa:$jaicf")
+    implementation("com.justai.jaicf:google-actions:$jaicf")
 
     implementation("io.ktor:ktor-server-netty:$ktor")
 }

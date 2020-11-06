@@ -41,9 +41,23 @@ object MainScenario : Scenario() {
             }
         }
 
-        state("custom") {
+        state("dialogflow") {
             activators {
                 intent("тут был Семен")
+            }
+
+            action {
+                reactions.sayRandom(
+                    "See you soon!",
+                    "Bye-bye!"
+                )
+                reactions.image("https://media.giphy.com/media/EE185t7OeMbTy/source.gif")
+            }
+        }
+
+        state("alexa") {
+            activators {
+                intent("HelloWorldIntent")
             }
 
             action {
