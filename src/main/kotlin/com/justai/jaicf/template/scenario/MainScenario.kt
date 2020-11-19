@@ -69,17 +69,17 @@ object MainScenario : Scenario() {
             }
         }
 
-//        state("smalltalk", noContext = true) {
-//            activators {
-//                anyIntent()
-//            }
-//
-//            action {
-//                activator.caila?.topIntent?.answer?.let {
-//                    reactions.say(it)
-//                } ?: reactions.say("wow so cool it works!")
-//            }
-//        }
+        state("smalltalk", noContext = true) {
+            activators {
+                anyIntent()
+            }
+
+            action {
+                activator.caila?.topIntent?.answer?.let {
+                    reactions.say(it)
+                } ?: reactions.say("wow so cool it works!")
+            }
+        }
 
         fallback {
             reactions.sayRandom(
